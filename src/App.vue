@@ -49,6 +49,10 @@ const filteredData = computed(() => {
     data.city.toLowerCase().includes(state.inputValue.trim().toLowerCase()),
   )
 })
+
+const fnPass = () => {
+  console.log('Btn clicked')
+}
 </script>
 
 <template>
@@ -56,10 +60,14 @@ const filteredData = computed(() => {
     <div class="header" data-aos="fade-in">
       <div class="nav-content">
         <div class="nav-weather">
-          <img src="./assets/nav/left.svg" alt="nav left" class="nav-left" />
+          <button class="nav-left-btn" @click="fnPass">
+            <img src="./assets/nav/left.svg" alt="nav left" class="nav-left-img" />
+          </button>
           <div class="weather-text">{{ state.weather }}</div>
         </div>
-        <img src="./assets/nav/right.svg" alt="nav right" class="nav-right" />
+        <button class="nav-right-btn" @click="fnPass">
+          <img src="./assets/nav/right.svg" alt="nav right" class="nav-right-img" />
+        </button>
       </div>
       <div class="input-text">
         <input
@@ -153,13 +161,17 @@ const filteredData = computed(() => {
 
 .nav-weather {
   display: flex;
+  align-items: center;
 }
 
-.nav-left {
-  padding-left: 16px;
-  padding-right: 5px;
-  min-width: 18px;
-  min-height: 24px;
+.nav-left-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-left: 16px;
+  width: 18px;
+  height: 24px;
 }
 
 .weather-text {
@@ -167,9 +179,14 @@ const filteredData = computed(() => {
   font-weight: 400;
 }
 
-.nav-right {
+.nav-right-btn {
   justify-self: right;
-  padding-right: 16px;
+  margin-right: 16px;
+  width: 33px;
+  height: 34px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .input-text {
