@@ -53,7 +53,7 @@ const filteredData = computed(() => {
 
 <template>
   <div class="app">
-    <div class="header">
+    <div class="header" data-aos="fade-in">
       <div class="weather-text">{{ state.weather }}</div>
       <div class="input-text">
         <input
@@ -78,8 +78,20 @@ const filteredData = computed(() => {
       </div>
     </div>
 
-    <ol class="app-content" data-aos="fade-in">
-      <li class="content" v-for="(item, idx) in filteredData" :key="idx">
+    <ol class="app-content">
+      <li
+        class="content"
+        v-for="(item, idx) in filteredData"
+        :key="idx"
+        data-aos="fade-in"
+        data-aos-offset="-1500"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+        data-aos-easing="ease-out"
+        data-aos-mirror="false"
+        data-aos-once="false"
+        data-aos-anchor-placement="top-bottom"
+      >
         <span class="content-temperature">{{ item.currentTemp }}°</span>
         <img :src="item.img" :alt="item.alt" class="content-cloud" />
         <span class="content-city">
@@ -95,7 +107,14 @@ const filteredData = computed(() => {
       </li>
     </ol>
 
-    <div class="not-found" v-if="filteredData.length === 0">
+    <div
+      class="not-found"
+      v-if="filteredData.length === 0"
+      data-aos="fade-in"
+      data-aos-offset="-1500"
+      data-aos-delay="50"
+      data-aos-duration="1000"
+    >
       <div class="not-found-text">Город не найден</div>
       <button class="not-found-btn" @click="state.inputValue = ''">Сбросить</button>
     </div>
@@ -110,7 +129,7 @@ const filteredData = computed(() => {
 
 .app {
   max-width: 390px;
-  min-height: 100vh;
+  min-height: 101vh;
   background: linear-gradient(169.61deg, #2e3358 2.83%, #1c1b33 94.85%);
   margin: 0 auto;
   z-index: -1;
