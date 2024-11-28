@@ -54,7 +54,13 @@ const filteredData = computed(() => {
 <template>
   <div class="app">
     <div class="header" data-aos="fade-in">
-      <div class="weather-text">{{ state.weather }}</div>
+      <div class="nav-content">
+        <div class="nav-weather">
+          <img src="./assets/nav/left.svg" alt="nav left" class="nav-left" />
+          <div class="weather-text">{{ state.weather }}</div>
+        </div>
+        <img src="./assets/nav/right.svg" alt="nav right" class="nav-right" />
+      </div>
       <div class="input-text">
         <input
           type="text"
@@ -124,7 +130,7 @@ const filteredData = computed(() => {
 <style scoped>
 @font-face {
   font-family: 'SF Pro Display';
-  src: url('../fonts/SF-Pro-Display-Regular.woff2') format('woff2');
+  src: url('./fonts/SF-Pro-Display-Regular.woff2') format('woff2');
 }
 
 .app {
@@ -135,10 +141,35 @@ const filteredData = computed(() => {
   z-index: -1;
 }
 
+.nav-content {
+  display: grid;
+  padding-bottom: 8px;
+  grid-template-columns: 50% 50%;
+  justify-items: space-around;
+  align-items: center;
+  padding-top: 58px;
+  min-height: 52px;
+}
+
+.nav-weather {
+  display: flex;
+}
+
+.nav-left {
+  padding-left: 16px;
+  padding-right: 5px;
+  min-width: 18px;
+  min-height: 24px;
+}
+
 .weather-text {
-  padding: 49px 9px 17px 44px;
   font-size: 1.56rem;
   font-weight: 400;
+}
+
+.nav-right {
+  justify-self: right;
+  padding-right: 16px;
 }
 
 .input-text {
@@ -185,6 +216,7 @@ const filteredData = computed(() => {
   max-width: 340px;
   min-height: 215px;
   background: url(./assets/bg_temperature.svg) no-repeat;
+  background-clip: padding-box;
   background-size: contain;
   background-position: center;
   margin-top: 30px;
@@ -216,9 +248,20 @@ const filteredData = computed(() => {
 }
 
 .content-temperature {
-  font-size: 2rem;
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  padding-left: 20px;
+  font-size: 4rem;
   font-weight: 400;
   margin-top: 30%;
+}
+
+.content-city {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: start;
+  padding-left: 20px;
 }
 
 .content-condition,
