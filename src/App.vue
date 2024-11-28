@@ -96,7 +96,7 @@ const filteredData = computed(() => {
     </ol>
 
     <div class="not-found" v-if="filteredData.length === 0">
-      <div class="not-found-text">Городов не найдено</div>
+      <div class="not-found-text">Город не найден</div>
       <button class="not-found-btn" @click="state.inputValue = ''">Сбросить</button>
     </div>
   </div>
