@@ -3,36 +3,37 @@ import { reactive, computed } from 'vue'
 
 const state = reactive({
   count: 0,
+  weather: 'Погода',
   weatherData: [
     {
-      city: 'Bengaluru, India',
-      status: 'Mid Rain',
+      city: 'Бенгалуру, Индия',
+      status: 'Средний дождь',
       img: './src/assets/Moon_cloud_mid_rain.svg',
-      alt: 'Moon cloud mid rain',
+      alt: 'Луна и облако со средним дождем',
       currentTemp: 19,
       tempRange: [24, 18],
     },
     {
-      city: 'Chennai, India',
-      status: 'Fast Wind',
+      city: 'Ченнай, Индия',
+      status: 'Сильный ветер',
       img: './src/assets/Moon_cloud_fast_wind.svg',
-      alt: 'Moon cloud fast wind',
+      alt: 'Луна и облако с сильным ветром',
       currentTemp: 22,
       tempRange: [26, 18],
     },
     {
-      city: 'Delhi, India',
-      status: 'Cloudy',
+      city: 'Дели, Индия',
+      status: 'Облачно',
       img: './src/assets/Moon_cloud_fast_wind.svg',
-      alt: 'Moon cloud fast wind',
+      alt: 'Луна и облако с сильным ветром',
       currentTemp: 29,
       tempRange: [32, 27],
     },
     {
-      city: 'Mumbai, India',
-      status: 'Thunderstorm',
+      city: 'Мумбаи, Индия',
+      status: 'Гроза',
       img: './src/assets/Cloud_3_zap.svg',
-      alt: 'Thunderstorm icon',
+      alt: 'Иконка грозы',
       currentTemp: 29,
       tempRange: [16, 23],
     },
@@ -53,11 +54,11 @@ const filteredData = computed(() => {
 <template>
   <div class="app">
     <div class="header">
-      <div class="weather-text">Weather</div>
+      <div class="weather-text">{{ state.weather }}</div>
       <div class="input-text">
         <input
           type="text"
-          placeholder="Search for a city or airport"
+          placeholder="Поиск нужного города или аэропорта"
           class="search-input"
           v-model="state.inputValue"
         />
@@ -77,7 +78,7 @@ const filteredData = computed(() => {
       </div>
     </div>
 
-    <ol class="app-content parent" data-aos="fade-in">
+    <ol class="app-content" data-aos="fade-in">
       <li class="content" v-for="(item, idx) in filteredData" :key="idx">
         <span class="content-temperature">{{ item.currentTemp }}°</span>
         <img :src="item.img" :alt="item.alt" class="content-cloud" />
@@ -94,11 +95,9 @@ const filteredData = computed(() => {
       </li>
     </ol>
 
-    <div class="not-found">
-      <div class="not-found-text" v-if="filteredData.length === 0">Городов не найдено</div>
-      <button class="not-found-btn" v-if="filteredData.length === 0" @click="state.inputValue = ''">
-        Reset
-      </button>
+    <div class="not-found" v-if="filteredData.length === 0">
+      <div class="not-found-text">Городов не найдено</div>
+      <button class="not-found-btn" @click="state.inputValue = ''">Сбросить</button>
     </div>
   </div>
 </template>
@@ -182,14 +181,15 @@ const filteredData = computed(() => {
   height: 110%;
   border-radius: 60%;
   background: conic-gradient(
-    from 180deg at 50% 50%,
-    #612fab -90.71deg,
-    rgba(97, 47, 171, 0) 50.02deg,
-    #612fab 129.55deg,
-    rgba(97, 47, 171, 0) 226.06deg,
-    #612fab 269.29deg,
-    rgba(97, 47, 171, 0) 410.02deg
-  );
+      from 180deg at 50% 50%,
+      #612fab -90.71deg,
+      rgba(97, 47, 171, 0) 50.02deg,
+      #612fab 129.55deg,
+      rgba(97, 47, 171, 0) 226.06deg,
+      #612fab 269.29deg,
+      rgba(97, 47, 171, 0) 410.02deg
+    )
+    no-repeat;
   opacity: 0.6;
   filter: blur(30px);
   z-index: -1;
@@ -224,7 +224,6 @@ const filteredData = computed(() => {
   box-sizing: content-box;
   opacity: 0.6;
   transition: opacity 0.15s ease-in-out;
-  color: #fff;
 }
 
 .search-input:focus ~ .search-icon {
@@ -242,6 +241,7 @@ const filteredData = computed(() => {
   border: none;
   border-radius: 10px;
   margin: 5px 0;
+  color: #1c1b33;
 }
 
 .not-found-btn:hover {
