@@ -1,4 +1,4 @@
-import { locations } from './mockData'
+import { locations } from './dataWeather'
 
 const API_KEY = '74cb8d52cbd44813833222527240112'
 const CITY = [
@@ -30,7 +30,6 @@ export const getWeatherCity = async () => {
       const dataForecast = await responseForecast.json()
       const dataCurrent = await responseCurrent.json()
       const forecast = dataForecast.forecast.forecastday[0].day
-      console.log(dataCurrent.current.condition.text)
       locations.push({
         city: el,
         statusId: dataCurrent.current.condition.text,
@@ -41,7 +40,7 @@ export const getWeatherCity = async () => {
         },
       })
     } catch (error) {
-      console.error('Ошибка при получении данных:', error)
+      console.error('Ошибка при получении данных о погоде:', error)
     }
   }
 }

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed, onBeforeMount } from 'vue'
 import { useCityStore } from '@/stores/city'
-import { locations } from './scripts/mockData'
-import { locationStatusId } from './scripts/mockData'
+import { locations } from './scripts/dataWeather'
+import { locationStatusId } from './scripts/dataWeather'
 
 import { getWeatherCity } from './scripts/getWeather'
 
