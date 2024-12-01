@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { useCityStore } from '@/stores/city'
-import { locations } from './scripts/data'
+import { locations } from './scripts/mockData'
+import { locationStatusId } from './scripts/mockData'
 
 const cityStore = useCityStore()
 
@@ -10,12 +11,16 @@ const filteredLocation = computed(() => {
     return locations
   }
   return locations.filter((data) =>
-    data.city.toLowerCase().includes(cityStore.cityName.trim().toLowerCase()),
+    data.cityId.toLowerCase().includes(cityStore.cityName.trim().toLowerCase()),
   )
 })
 
 const changeCityStore = (e: Event) => {
   cityStore.change((e.target as HTMLInputElement).value)
+}
+
+const findStatusId = (id: number) => {
+  return locationStatusId.find((status) => status.id == id)
 }
 </script>
 
@@ -35,16 +40,20 @@ const changeCityStore = (e: Event) => {
       data-aos-anchor-placement="top-bottom"
     >
       <span class="content-temperature">{{ item.temperature.currentTemp }}°</span>
-      <img :src="item.img" :alt="item.alt" class="content-cloud" />
+      <img
+        :src="findStatusId(item.statusId)?.img"
+        :alt="findStatusId(item.statusId)?.alt"
+        class="content-cloud"
+      />
       <span class="content-city">
         <span class="content-high-low">
           H:{{ item.temperature.maxTemp }}° L:{{ item.temperature.minTemp }}° </span
         ><br />
-        <span class="content-city-name">{{ item.city }}</span>
+        <span class="content-city-name">{{ item.cityId }}</span>
       </span>
       <span class="content-condition">
         <span class="empty-bg"> </span><br />
-        <span class="content-condition">{{ item.status }}</span>
+        <span class="content-condition">{{ findStatusId(item.statusId)?.name }}</span>
       </span>
     </li>
   </ol>
