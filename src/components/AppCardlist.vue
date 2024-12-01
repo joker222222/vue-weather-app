@@ -58,7 +58,7 @@ const changeCityStore = (e: Event) => {
     data-aos-duration="1000"
   >
     <div class="not-found-text">Город не найден</div>
-    <button class="not-found-btn" @click="changeCityStore($event)">Сбросить</button>
+    <button class="btn btn-outline-light" @click="changeCityStore($event)">Сбросить</button>
   </div>
 </template>
 

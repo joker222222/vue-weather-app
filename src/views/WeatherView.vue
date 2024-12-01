@@ -14,9 +14,8 @@ import AppCardlist from '@/components/AppCardlist.vue'
 <style>
 @font-face {
   font-family: 'SF Pro Display';
-  src: url('./fonts/SF-Pro-Display-Regular.woff2') format('woff2');
+  src: url('@/fonts/SF-Pro-Display-Regular.woff2') format('woff2');
 }
-
 .app {
   max-width: 390px;
   min-height: 100vh;

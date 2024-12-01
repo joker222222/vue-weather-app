@@ -1,12 +1,11 @@
 <script lang="ts" setup>
 import { useCityStore } from '@/stores/city'
+
 const pageTitle = 'Погода'
 const pageInputPlaceholder = 'Поиск нужного города или аэропорта'
 const cityStore = useCityStore()
 
 const changeCityStore = (e: Event) => {
-  console.log(navLeftStringPath)
-  console.log(navRightStringPath)
   cityStore.change((e.target as HTMLInputElement).value)
 }
 
@@ -53,11 +52,6 @@ const navRightStringPath = new URL('../assets/navCardHeader/right.svg', import.m
 </template>
 
 <style scoped>
-@font-face {
-  font-family: 'SF Pro Display';
-  src: url('./fonts/SF-Pro-Display-Regular.woff2') format('woff2');
-}
-
 .nav-content {
   display: grid;
   padding-bottom: 8px;
@@ -81,6 +75,12 @@ const navRightStringPath = new URL('../assets/navCardHeader/right.svg', import.m
   margin-left: 16px;
   width: 18px;
   height: 24px;
+}
+
+.nav-left-img {
+  width: 18px;
+  height: 24px;
+  padding-bottom: 2px;
 }
 
 .weather-text {
