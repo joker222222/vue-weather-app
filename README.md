@@ -1,5 +1,5 @@
 # Add your key API from api.weather in getWeather.ts API_KEY
-click - https://www.weatherapi.com/docs/ sign in or sign up -> my accounts -> API_KEY
+click - https://www.weatherapi.com/docs/ -> sign in or sign up -> my accounts -> API_KEY
 
 # vue-project
 
