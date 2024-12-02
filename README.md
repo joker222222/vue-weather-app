@@ -1,4 +1,4 @@
-####Add your key API from api.weather in getWeather.ts API_KEY
+# Add your key API from api.weather in getWeather.ts API_KEY
 
 # vue-project
 
