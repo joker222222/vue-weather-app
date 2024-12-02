@@ -78,6 +78,10 @@ const findStatusId = (id: string) => {
 </template>
 
 <style scoped>
+ol {
+  padding: 0;
+}
+
 .app-content {
   position: relative;
   margin: 25px;
