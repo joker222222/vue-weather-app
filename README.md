@@ -1,3 +1,5 @@
+Add your key API from api.weather in getWeather.ts API_KEYs
+
 # vue-project
 
 This template should help get you started developing with Vue 3 in Vite.
