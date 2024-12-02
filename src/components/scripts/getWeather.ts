@@ -102,7 +102,6 @@ const CITY = [
   'Пермь',
   'Воронеж',
   'Волгоград',
-  'Нью-Йорк',
 ]
 
 export const getWeatherCity = async () => {

@@ -78,9 +78,10 @@ const navRightStringPath = new URL('../assets/navCardHeader/right.svg', import.m
 }
 
 .nav-left-img {
+  display: block;
+  margin: 0 auto;
   width: 18px;
   height: 24px;
-  padding-bottom: 2px;
 }
 
 .weather-text {
